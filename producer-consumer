@@ -1,0 +1,60 @@
+pragma solidity ^0.5.0;
+contract problem
+{
+    
+    int public crop_quant;
+    int farmer_money;
+    int consumer_money;
+    int public crop_price;
+    int consumer_crop;
+    
+     function farmermoney(int a) public
+     {
+         farmer_money=a;
+     }
+     
+   function consumermoney(int a) public
+     {
+         consumer_money=a;
+     }
+
+
+   function cropquantity(int quant,int crop_m)public {
+      crop_quant=quant;
+      crop_price=crop_m;
+   }
+    
+    
+    function sell() public 
+    {
+        farmer_money+=crop_price;
+        buy();
+        
+        }
+    
+    
+    
+    function buy() private
+    {
+        if(crop_price<=consumer_money)
+        {
+        consumer_crop+=crop_quant;
+        consumer_money-=crop_price;
+    crop_quant=0;
+    crop_price=0;
+        }
+    }
+    
+
+    function farmer_wallet() public view returns (int money)
+    {
+     return (farmer_money);   
+    }
+    
+    
+    function consumer_wallet() public view returns (int money,int crop)
+    {
+     return (consumer_money,consumer_crop);   
+    }
+    
+}
