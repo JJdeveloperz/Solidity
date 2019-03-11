@@ -25,24 +25,20 @@ contract problem
    }
     
     
-    function sell() public 
-    {
-        farmer_money+=crop_price;
-        buy();
-        
-        }
     
     
-    
-    function buy() private
+    function buy() public
     {
         if(crop_price<=consumer_money)
         {
         consumer_crop+=crop_quant;
         consumer_money-=crop_price;
+     farmer_money+=crop_price;
     crop_quant=0;
     crop_price=0;
         }
+    
+        
     }
     
 
