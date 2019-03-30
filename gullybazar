@@ -1,0 +1,59 @@
+pragma solidity 0.5.1;
+contract supplychain{
+    struct Buyer{
+        string name;
+        string addressie;
+    }
+    
+    struct Seller{
+        string name;
+        string addressie;
+    }
+    
+    struct Product{
+        string name;
+        uint quantity;
+        uint price;
+        string owner;
+        
+    }
+    
+    mapping (address=> Buyer) buyers;
+    address[] private selleraccounts;
+    
+    mapping (address=> Seller) sellers;
+    address[] private buyeraccounts;
+    
+    mapping (address=> Product) products;
+    address[] private productaccounts;
+    
+    
+    function setprodsell(address _address,string memory name,uint price,uint quantity) public{
+     supplychain.Product storage product=products[_address];
+        product.name=name;
+        product.price=price;
+        product.quantity=quantity;
+        product.owner=
+        productaccounts.push(_address) -1;
+    }
+    
+    function sellacc() view public returns (address[] memory)
+    {
+        return productaccounts;
+    }
+    
+    function getsell(address _address) view public returns (string memory name,uint price,uint quantity) {
+        return (products[_address].name, products[_address].price,products[_address].quantity);
+    }
+    
+    
+    
+    function buyprod(address _address) public{
+        
+        
+        
+    }
+    
+    
+    }
+
